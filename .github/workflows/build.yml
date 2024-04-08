@@ -29,13 +29,8 @@ jobs:
           npm install
           npm run build
 
-      - name: Setup environment
-        run: gpg --quiet --batch --yes --decrypt --passphrase="$PASSPHRASE" --output calendar-service-account.json calendar-service-account.json.gpg
-        env:
-          PASSPHRASE: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_PASSPHRASE }}
-
       - name: Download basic.ics file
-        run: curl -o dist/basic.ics https://calendar.google.com/calendar/ical/finos.org_fac8mo1rfc6ehscg0d80fi8jig%40group.calendar.google.com/public/basic.ics
+        run: curl -o dist/basic.ics https://calendar.google.com/calendar/ical/c_f1b5b03aab2eedcceb374183e0d44d60d87ccd43653dd79f91f12c16bb5a78fc%40group.calendar.google.com/public/basic.ics
 
       - name: Get events from Google API
         run: npm run get-events
